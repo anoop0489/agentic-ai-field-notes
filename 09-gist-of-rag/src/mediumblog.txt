@@ -1,0 +1,52 @@
+﻿Vector Databases: A Practical Introduction
+
+This is an original sample document written for this repository so the RAG
+ingestion demo has something to embed and index. It intentionally avoids
+copying any third-party article. Feel free to replace it with your own text.
+
+What is a vector database?
+
+A vector database is a system designed to store and search high-dimensional
+vectors efficiently. In modern AI applications, text, images, and audio are
+converted into numeric vectors called embeddings. Two pieces of content that
+are similar in meaning end up close together in this vector space, even if they
+share no exact keywords. A vector database indexes these embeddings so that,
+given a query vector, it can quickly return the most similar stored vectors.
+
+Why do we need them for LLM applications?
+
+Large language models are trained on a fixed snapshot of data and cannot see
+your private documents. Retrieval-Augmented Generation (RAG) solves this by
+looking up relevant passages from your own corpus at question time and feeding
+them into the prompt. The retrieval step depends on a vector database: you embed
+your documents once, store the vectors, and then embed each incoming question to
+find the closest passages. This grounds the answer in real source text.
+
+How similarity search works
+
+Most vector databases use an approximate nearest neighbor (ANN) algorithm.
+Comparing a query against every stored vector exactly would be too slow at
+scale, so ANN indexes such as HNSW or IVF trade a tiny amount of accuracy for a
+large gain in speed. Similarity is commonly measured with cosine similarity,
+which looks at the angle between two vectors rather than their magnitude.
+
+Key concepts to remember
+
+Embedding: a numeric vector that captures the meaning of a piece of content.
+Dimensionality: the length of the vector, for example 1536 values.
+Metric: the math used to compare vectors, such as cosine or dot product.
+Index: the data structure that makes similarity search fast.
+Metadata: extra fields stored alongside a vector, used for filtering results.
+
+Choosing a vector database
+
+Managed cloud services remove the burden of running infrastructure and scale
+automatically. Self-hosted options give you full control and can run entirely
+on your own machine. The right choice depends on your scale, budget, privacy
+needs, and how much operational work you want to own.
+
+Summary
+
+Vector databases are the retrieval backbone of RAG systems. They turn the
+abstract idea of semantic similarity into a fast, practical lookup, letting an
+LLM answer questions about data it was never trained on.
